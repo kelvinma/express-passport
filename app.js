@@ -13,6 +13,7 @@ var passport = require('./lib/passport');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var workouts = require('./routes/workouts');
 
 var app = express();
 
@@ -26,10 +27,10 @@ app.use(session({
 	resave : false,
 	saveUninitialized : false,
 	store : new MongoStore({
-		url : "mongodb://localhost/ga-passport-sessions"
+		url : "mongodb://localhost/my-pr-db"
 	}),
 	cookie : {
-		maxAge : 300000 // 5 minutes
+		maxAge : 900000 // 15 minutes
 	},
 	genid : function() {
 		return uuid.v4({
